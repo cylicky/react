@@ -8,6 +8,7 @@ const downloadRouter = require("../routes/download");
 const faqRouter = require("../routes/faq");
 const introductionRouter = require("../routes/introduction");
 const contentRouter = require("../routes/content");
+const pictureRouter = require("../pictureloads");
 const initRoute = async (app) => {
   app.use("/api/v1/user", routeruser); // 用户
   app.use("/api/v1/navigation", navigationRouter); // 导航
@@ -19,5 +20,6 @@ const initRoute = async (app) => {
   app.use("/api/v1/faq", faqRouter); // 问题
   app.use("/api/v1/introduction", introductionRouter); // 介绍
   app.use("/api/v1/content", contentRouter); // API内容
+  app.use("/api/v1/uploader", pictureRouter); // 图片上传
 };
 module.exports = initRoute;

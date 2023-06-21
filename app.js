@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const multer = require("multer");
 const initDB = require("./src/init/initDB.js");
 const initServer = require("./src/init/initServe.js");
 const initRoute = require("./src/init/initRoute");
@@ -14,7 +15,7 @@ const app = express();
 const main = async () => {
   // 解析JSON数据 数据解析中间件需要在路由之前调用
   //cors 跨域     morgan 请求日志
-  // app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: false }));
   app
     .use(express.json())
     .use(express.urlencoded({ extended: false }))
@@ -22,6 +23,8 @@ const main = async () => {
     .use(morgan("tiny"));
   // 静态资源文件
   app.use("/status", express.static("public"));
+  // 静态资源存储
+  //http://localhost:3600/status/images/photo-1687338941647.png
   // 初始化路由
   initRoute(app);
   // 中间件 自定义中间件 错误处理中间件

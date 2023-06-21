@@ -8,7 +8,7 @@ const download = require("../models/download");
 const Log = require("../models/logs");
 const intRoduction = require("../models/introduction");
 const FAQ = require("../models/faq");
-
+const Pic = require("../models/pic");
 // A.hasOne(B); // A 有一个 B
 // A.belongsTo(B); // A 属于 B
 // A.hasMany(B); // A 有多个 B
